@@ -1,5 +1,6 @@
 $(function(){
     kiir();
+    $("#OK").click(ment);
     
 });
 
@@ -23,4 +24,18 @@ function kiir(){
         $("article table tr").eq(i + 1).append('<td class="torolgomb" id="'+(i + 1)+'">' + '<form><input type="button" id="torol" name="torol" value="TÖRÖL"></form>' + "</td>");
 
     }
+}
+
+function ment(){
+    var ujTermek={};
+    ujTermek.id=$("#id").val();
+    ujTermek.nev=$("#nev").val();
+    ujTermek.ar=$("#ar").val();
+    ujTermek.tipus=$("#tipus").val();
+    ujTermek.szin=$("#szin").val();
+    termekObjektum.push(ujTermek);
+    
+    kiir();
+    
+    
 }
