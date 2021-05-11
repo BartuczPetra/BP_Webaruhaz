@@ -1,3 +1,5 @@
+@charset "UTF-8";
+
 body{
     background-image: url('kepek/rozsaszin.jpg');
 }
@@ -14,4 +16,45 @@ footer,section,article{
     border: 1px solid #dbb1bd;
     padding: 10px;
     text-align: center;
+}
+/*ce6681*/
+fieldset div{
+    display: grid;
+    grid-template-columns:110px auto;
+}
+
+label{
+    text-align: right;
+    padding-right: 5px;
+}
+fieldset,input{
+    border-color: #bd8293;
+}
+input{
+    margin-bottom: 5px;
+}
+#OK{
+    background-color: #dbb1bd;
+    font-weight: bold;
+    padding: 5px;
+}
+#torol{
+    background-color: #f9dae2;
+    font-weight: bold;
+    padding: 5px;
+}
+table{
+    margin: auto;
+    border-collapse: collapse;
+}
+td,th{
+    border: 2px solid #bd8293;
+    border-collapse: collapse;
+    padding: 10px;
+}
+.torolgomb{
+    border: none;
+}
+th:hover, #OK:hover, #torol:hover{
+    cursor: pointer;
 }
