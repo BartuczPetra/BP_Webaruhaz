@@ -1,6 +1,7 @@
 $(function(){
     kiir();
     $("#OK").click(ment);
+    $("#torol").click(torol);
     
 });
 
@@ -24,6 +25,7 @@ function kiir(){
         $("article table tr").eq(i + 1).append('<td class="torolgomb" id="'+(i + 1)+'">' + '<form><input type="button" id="torol" name="torol" value="TÖRÖL"></form>' + "</td>");
 
     }
+    $("th").click(rendez);
 }
 
 function ment(){
@@ -37,5 +39,30 @@ function ment(){
     
     kiir();
     
+    
+}
+
+var irany=false;
+
+function rendez(){
+    var id=$(this).attr("id");
+    if (irany) {
+        termekObjektum.sort(function(a,b){
+       return Number(a[id]>b[id])-0.5;
+    });
+    }else{
+        termekObjektum.sort(function(a,b){
+       return Number(a[id]<b[id])-0.5;
+    });
+    }
+    irany=!irany;
+    kiir();
+}
+
+function torol(){
+    /*var ti = $(this).attr("id");
+    termekObjektum.splice()
+                $("article table tr").eq(ti-i);*/
+
     
 }
