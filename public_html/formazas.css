@@ -1,0 +1,17 @@
+body{
+    background-image: url('kepek/rozsaszin.jpg');
+}
+main{
+    max-width: 600px;
+    margin: auto;
+    background-color: #f9dae2;
+    border: 5px solid #f8f1f2;
+    padding: 10px;
+    text-align: center;
+    color: #581a2c;
+}
+footer,section,article{
+    border: 1px solid #dbb1bd;
+    padding: 10px;
+    text-align: center;
+}
