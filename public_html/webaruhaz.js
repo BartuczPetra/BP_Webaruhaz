@@ -1,30 +1,40 @@
 $(function(){
+    alapKiir();
     kiir();
     $("#OK").click(ment);
-    $("#torol").click(torol);
     
 });
 
-var termekJSON='[{"id":"a1","nev":"Tej","ar":"500 Ft","tipus":"laktózmentes","szin":"lila"},{"id":"c4","nev":"Nadrág","ar":"2000 Ft","tipus":"farmer","szin":"kék"}]';
+var termekJSON='[{"id":"v1","nev":"Virág","ar":"500 Ft","fajta":"Tulipán","szin":"Rózsaszín"},{"id":"b4","nev":"Bonbon","ar":"1000 Ft","fajta":"Dupla csokis","szin":"Barna"}]';
 var termekObjektum=JSON.parse(termekJSON);
 
-function kiir(){
+
+function alapKiir(){
     $("article").empty();
     $("article").append("<table>");
     $("article table").append("<tr>");
-    for (var item in termekObjektum[0]) {
-        $("article table tr").append("<th id=\""+item+"\">"+item+"</th>");
+    var tablazatCim=["ID","Termék neve","Termék ára","Termék fajtája","Termék színe"];
+    for (var item in tablazatCim) {
+        $("article table tr").append("<th id=\""+item+"\">"+tablazatCim[item]+"</th>");
     }
     
     for (var i = 0; i < termekObjektum.length; i++) {
         $("article table").append("<tr>");
         for (var item in termekObjektum[i]) {
-            $("article table tr").eq(i + 1).append("<td>" + termekObjektum[i][item] + "</td>");
-                       
+            $("article table tr").eq(i + 1).append('<td class="'+(i + 1)+'">' + termekObjektum[i][item] + "</td>");
         }
-        $("article table tr").eq(i + 1).append('<td class="torolgomb" id="'+(i + 1)+'">' + '<form><input type="button" id="torol" name="torol" value="TÖRÖL"></form>' + "</td>");
-
     }
+}
+
+
+function kiir(){
+    for (var i = 0; i < $("article table tr").length; i++) {
+        $("article table tr").eq(i + 1).append('<td class="torolgomb" id="'+(i)+'">' + '<form><input type="button" id="torol" name="torol" value="TÖRÖL"></form>' + "</td>");
+        $("article table tr").eq(i + 1).append('<td class="modosit" id="m'+(i)+'">' + '<form><input type="button" id="modosit" name="modosit" value="Módosítás"></form>' +"</td>");
+    }
+    
+    $(".torolgomb").click(torol);
+    $(".modosit").click(modositas);
     $("th").click(rendez);
 }
 
@@ -33,13 +43,12 @@ function ment(){
     ujTermek.id=$("#id").val();
     ujTermek.nev=$("#nev").val();
     ujTermek.ar=$("#ar").val();
-    ujTermek.tipus=$("#tipus").val();
+    ujTermek.fajta=$("#fajta").val();
     ujTermek.szin=$("#szin").val();
     termekObjektum.push(ujTermek);
     
+    alapKiir();
     kiir();
-    
-    
 }
 
 var irany=false;
@@ -59,10 +68,25 @@ function rendez(){
     kiir();
 }
 
-function torol(){
-    /*var ti = $(this).attr("id");
-    termekObjektum.splice()
-                $("article table tr").eq(ti-i);*/
-
-    
+function torol(){    
+    var i = $(this).attr("id");
+    termekObjektum.splice(i,1);
+    alapKiir();
+    kiir();    
+}
+function modositas(){
+    console.log(termekObjektum);
+    var i = $(this).attr("id");
+    var index=i[1];
+    $("article").append('<section><form><fieldset><div><label for="iduj">ID:</label><input type="text" id="iduj" name="iduj" value=""></div><div><label for="nevuj">Termék neve:</label><input type="text" id="nevuj" name="nevuj" value=""></div><div><label for="aruj">Termék ára:</label><input type="text" id="aruj" name="aruj" value=""></div><div><label for="fajtauj">Termék fajtája:</label><input type="text" id="fajtauj" name="fajtauj" value=""></div><div><label for="szinuj">Termék színe:</label><input type="text" id="szinuj" name="szinuj" value=""></div></fieldset><br><input type="button" id="MODOK" name="OK" value="OK"></form></section>');
+    $("#MODOK").click(csere);
+    function csere(){
+        termekObjektum[index].id=$("#iduj").val();
+        termekObjektum[index].nev=$("#nevuj").val();
+        termekObjektum[index].ar=$("#aruj").val();
+        termekObjektum[index].fajta=$("#fajtauj").val();
+        termekObjektum[index].szin=$("#szinuj").val();
+        alapKiir();
+        kiir();
+    }
 }

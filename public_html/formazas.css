@@ -11,16 +11,29 @@ main{
     padding: 10px;
     text-align: center;
     color: #581a2c;
+    font-size: 13pt;
 }
 footer,section,article{
-    border: 1px solid #dbb1bd;
+    border: 1px dotted #dbb1bd;
     padding: 10px;
+    text-align: center;
+}
+h1{
+    font-family: Segoe Script;
+}
+header img{
+    width: 70%;
+    margin: auto; 
+}
+header{
+    display: grid;
+    grid-template-columns:1fr 1fr;
     text-align: center;
 }
 /*ce6681*/
 fieldset div{
     display: grid;
-    grid-template-columns:110px auto;
+    grid-template-columns:120px auto;
 }
 
 label{
@@ -36,23 +49,30 @@ input{
 #OK{
     background-color: #dbb1bd;
     font-weight: bold;
-    padding: 5px;
+    padding: 5px 20px;
+    font-size: 13pt;
+    color: #581a2c;
 }
-#torol{
+#torol,#modosit, #MODOK{
     background-color: #f9dae2;
     font-weight: bold;
     padding: 5px;
+    color: #581a2c;
+    font-size: 11pt;
 }
 table{
     margin: auto;
     border-collapse: collapse;
+}
+th{
+    font-weight: bold;
 }
 td,th{
     border: 2px solid #bd8293;
     border-collapse: collapse;
     padding: 10px;
 }
-.torolgomb{
+.torolgomb, .modosit{
     border: none;
 }
 th:hover, #OK:hover, #torol:hover{
