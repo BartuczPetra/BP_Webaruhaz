@@ -78,7 +78,7 @@ function modositas(){
     console.log(termekObjektum);
     var i = $(this).attr("id");
     var index=i[1];
-    $("article").append('<section><form><fieldset><div><label for="iduj">ID:</label><input type="text" id="iduj" name="iduj" value=""></div><div><label for="nevuj">Termék neve:</label><input type="text" id="nevuj" name="nevuj" value=""></div><div><label for="aruj">Termék ára:</label><input type="text" id="aruj" name="aruj" value=""></div><div><label for="fajtauj">Termék fajtája:</label><input type="text" id="fajtauj" name="fajtauj" value=""></div><div><label for="szinuj">Termék színe:</label><input type="text" id="szinuj" name="szinuj" value=""></div></fieldset><br><input type="button" id="MODOK" name="OK" value="OK"></form></section>');
+    $("article").append('<section><form><fieldset><div><label for="iduj">ID:</label><input type="text" id="iduj" name="iduj" value="'+termekObjektum[index].id+'"></div><div><label for="nevuj">Termék neve:</label><input type="text" id="nevuj" name="nevuj" value="'+termekObjektum[index].nev+'"></div><div><label for="aruj">Termék ára:</label><input type="text" id="aruj" name="aruj" value="'+termekObjektum[index].ar+'"></div><div><label for="fajtauj">Termék fajtája:</label><input type="text" id="fajtauj" name="fajtauj" value="'+termekObjektum[index].fajta+'"></div><div><label for="szinuj">Termék színe:</label><input type="text" id="szinuj" name="szinuj" value="'+termekObjektum[index].szin+'"></div></fieldset><br><input type="button" id="MODOK" name="OK" value="OK"></form></section>');
     $("#MODOK").click(csere);
     function csere(){
         termekObjektum[index].id=$("#iduj").val();
